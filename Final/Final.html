@@ -1,0 +1,71 @@
+<html>
+    <head>
+      <title>Whatever you want</title>
+      <script>
+               //Must include 5 picture
+               var pics = ["<img src = 'UnitedStates.png'>","<img src = 'Canada.png'>","<img src = 'EnglandFlag.jpg'>","<img src= 'SouthAfrica.png'>" "img src=Brazil.jpg'>" ];
+               var solutions = ["United States"  , "Canada" ,  "England", "South Africa", "Brazil" ];
+            var answers = [];//Populate this with user answers
+            var index = 0;//add one to this in getUserAnswers to advance
+            var score = 0;//this gets added to in the checkAnswers() function
+            var table = ""; //this gets created in the displayResult() function
+            function getUserAnswers()
+            {
+              answers[index] = document.getElementById("ans").value;
+              index = index+1;
+              if( index >= 5)
+              {
+              checkAnswers();
+              }
+              document.getElementById("x").innerHTML=pics[index];
+              //Where you populate the answers array
+              //Very similar to pop() array
+              //Once index equals pics.length
+            }
+
+
+            function checkAnswers()
+            {
+              //Using a loop, loop through the values in solutions array
+              //and check if they are equal to the values in answers array
+              //If answer[i] == solutions[i]  then add one to a score variable
+              //Once the loop terminates and checks all checkAnswers
+              displayResult();
+            }
+
+            function displayResult()
+            {
+              //Sends a table to a span tag with the results
+              //Should look like this:
+
+              //Your Score:  4/5
+              //Answer 1: Cat  Your Answer: Cat
+              //Answer 2: Dog  Your Answer: Dog
+              //Answer 3: Fish  Your Answer: Fish
+              //Answer 4: Camel  Your Answer: Camel
+              //Answer 5: Griaffe  Your Answer: ajkdjahdk
+            }
+
+            function reset()
+            {
+              //sets the user's answer array back to empty using .splice
+              //score = 0
+              //index  = 0 so that you start on the first picture again
+              //hide the reset button again .style.visiblity = "hidden";
+            }
+           function hide()
+           {
+             //document.getElementById(x).style.visiblity = "hidden";
+             //hide the reset button
+             //using document.getElementById('id').style.visiblity = "hidden";
+           }
+      </script>
+    </head>
+    <body  onload = "hide()"><!--This is how you call something right away-->
+       <!--You Complete HTML-->
+       <span id = "x"> <img src = 'UnitedStates.png'> </span>
+       <input type="text" id="ans">
+       <input type="button" value="Next Picture" onclick="getUserAnswers()">
+    </body>
+
+</html>

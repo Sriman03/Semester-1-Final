@@ -1,0 +1,162 @@
+<html>
+    <head>
+      <title>APCSP Final</title>
+      <center> <h1>Guess the Country Game!</h1> </center>
+      <hr>
+      <br>
+
+      <style>
+      body{
+          background-image: url(https://static8.depositphotos.com/1516135/1020/i/950/depositphotos_10205038-stock-photo-earthy-background-image.jpg);
+          color: black;
+          font-family: comic sans-serif;
+          font-size: 20px;
+        }
+      h1   {color: blue;}
+      p    {color: red;}
+
+
+      h1:hover {
+              background-color: yellow;}
+
+    hr  {
+        height: 20px;
+        width: 100%;
+        background-color: #ff9999;
+    }
+
+    img  {
+          height: 300px;
+          width: 500px;
+         }
+
+    script  {
+            margin-left: 5000000px;
+            margin-right: 1px;
+            }
+  .button {
+
+  background-color: #4CAF50; /* Green */
+  border: none;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+}
+
+#countries {
+
+  height: 300px;
+  width: 500px;
+
+}
+
+
+
+
+      </style>
+
+      <script>
+               //Must include 5 picture
+            var pics = ["<img src = 'UnitedStates.png'>","<img src = 'Canada.png'>","<img src = 'Brazil.jpg'>","<img src = 'SouthAfrica.png'>","<img src = 'India.png'>"];
+            var results = ["USA", "Canada", "Brazil", "South Africa", "India"];
+            var answers = [];//Populate this with user answers
+            var index = 0;//add one to this in getUserAnswers to advance
+            var score = 0;//this gets added to in the checkAnswers() function
+            var table = ""; //this gets created in the displayResult() function
+            function getUserAnswers()
+            {
+              answers[index] = document.getElementById("ans").value;
+              index = index+1;
+              if( index >= 5)
+              {
+              checkAnswers();
+              }
+              document.getElementById('x').innerHTML=pics[index];
+              //Where you populate the answers array
+              //Very similar to pop() array
+              //Once index equals pics.length
+            }
+
+
+  function checkAnswers()
+            {
+
+            if(answers[0] == results[0])
+            {
+            score++;
+            }
+            if(answers[1] == results[1])
+            {
+            score++;
+            }
+            if(answers[2] == results[2])
+            {
+            score++;
+            }
+            if(answers[3] == results[3])
+            {
+            score++;
+            }
+            if(answers[4] == results[4])
+            {
+            score++;
+            }
+            if(answers[5] == results[5])
+            {
+            score++;
+            }
+
+function displayResult()
+        {}
+                table = table + "Score:" + "&nbsp" + score + "/5" + "<br>" +
+                "ANSWER 1 -- " + results[0] + "&nbsp &nbsp &nbsp &nbsp" + "YOUR ANSWER -- " + answers[0] + "<br>" +
+
+                "ANSWER 2 -- " + results[1] + "&nbsp &nbsp &nbsp &nbsp" + "YOUR ANSWER -- " + answers[1] + "<br>" +
+
+                "ANSWER 3 -- " + results[2] + "&nbsp &nbsp &nbsp &nbsp" + "YOUR ANSWER -- " + answers[2] + "<br>" +
+
+                "ANSWER 4 -- " + results[3] + "&nbsp &nbsp &nbsp &nbsp" + "YOUR ANSWER -- " + answers[3] + "<br>" +
+
+                "ANSWER 5 -- " + results[4] + "&nbsp &nbsp &nbsp &nbsp" + "YOUR ANSWER -- " + answers[4];
+                document.getElementById('display').innerHTML = table;
+                document.getElementById('restart').style.visibility = "visible";
+          }
+          function reset()
+          {
+            score = 0;
+            table = "";
+            var target = 1;
+          for(var i=answers.length-1;i>=0; i--)
+          {
+            if(answers[i] == target)
+          {
+            answers.splice(i,1);
+          }
+          }
+          document.getElementById('display').innerHTML = table ;
+          document.getElementById('x').innerHTML = pics[0];
+          document.getElementById('restart').style.visibility = "hidden";
+          index = 0;
+        }
+
+          function hide()
+          {
+            document.getElementById('restart').style.visibility = "hidden";
+          }
+      </script>
+    </head>
+    <body onload="hide()">
+      <span id="x"><img src="UnitedStates.png"></span>
+    <center>  <span id="display"></span> <br> </center>
+      <br>
+      <br><br>
+      <span id="display"></span>
+      <br><br>
+      <input id="ans" type="text" onfocus="this.value=''">
+      <input = type="button" value="Next Picture" onclick="getUserAnswers()">
+      <input id="restart" type="button" value="Restart" onload="hide()" onclick="reset()">
+    </body>
+</html>
